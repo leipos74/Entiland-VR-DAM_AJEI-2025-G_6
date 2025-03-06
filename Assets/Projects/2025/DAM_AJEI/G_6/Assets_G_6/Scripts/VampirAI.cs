@@ -8,15 +8,22 @@ namespace EntilandVR.DosCinco.DAM_AJEI.G_Seis {
         [SerializeField] private Transform player;
         [SerializeField] private float speed = 1.0f;
         private  Rigidbody rb;
+        private float health = 100f;
+       [SerializeField] private AudioSource audioSource;
 
         private void Start()
         {
+
             rb = GetComponent<Rigidbody>();
         }
 
         private void Update()
         {
-
+            if (health <= 0)
+            {
+                audioSource.PlayOneShot(audioSource.clip);
+                Destroy(gameObject, audioSource.clip.length);
+            }
         }
 
         private void FixedUpdate()
@@ -25,7 +32,15 @@ namespace EntilandVR.DosCinco.DAM_AJEI.G_Seis {
 
             rb.MovePosition(rb.position + directrion * speed * Time.fixedDeltaTime);
         }
+
+
+        public void DamageAI(float damage)
+        {
+            health -= damage;
+        }
     }
+
+   
 }
 
 

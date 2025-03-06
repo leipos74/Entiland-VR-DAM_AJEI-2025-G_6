@@ -20,6 +20,7 @@ namespace EntilandVR.DosCinco.DAM_AJEI.G_Seis
         public UnityEvent pinBreakEvent;
         public UnityEvent explosionEvent;
         [SerializeField] private AudioSource explosionSound;
+        [SerializeField] private float GranadeDamage;
 
         private void OnEnable()
         {
@@ -115,6 +116,14 @@ namespace EntilandVR.DosCinco.DAM_AJEI.G_Seis
                     var dist = Vector3.Distance(hit.attachedRigidbody.position, grenade.transform.position);
                     hit.attachedRigidbody.AddExplosionForce(explosionForce - explosionForce * (dist / explosionRadius), grenade.transform.position, explosionRadius);
                 }
+
+                if (hit.gameObject.tag == "Obstacle")
+                {
+                    VampirAI aiTemp = hit.gameObject.GetComponent<VampirAI>();
+
+                    aiTemp.DamageAI(100);
+                }
+
             }
             explosionEvent?.Invoke();
             GameObject.Instantiate(explosionEffect, grenade.transform.position, grenade.transform.rotation);
