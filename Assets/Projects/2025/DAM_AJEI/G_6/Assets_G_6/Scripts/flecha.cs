@@ -12,8 +12,8 @@ public class flecha : MonoBehaviour
         private void Start()
         {
             body = GetComponent<Rigidbody>();
-            transform.localPosition = new Vector3(1.817f, 0, -0.619f);
-            transform.localScale = new Vector3(6, 0.4f, 0.4f);
+            transform.localPosition = new Vector3(0, 0, -0.619f);
+            transform.localScale = new Vector3(1000, 1000, 1000);
             transform.localRotation = Quaternion.identity;
 
         }
