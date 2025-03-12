@@ -37,7 +37,7 @@ public class flecha : MonoBehaviour
         {
             if(other.gameObject.tag == "Obstacle"){
                 VampirAI aiTemp = other.gameObject.GetComponent<VampirAI>();
-                aiTemp.DamageAI(100);
+                aiTemp.DamageAI(60);
             }
         }
     }

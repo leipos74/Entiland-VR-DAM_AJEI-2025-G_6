@@ -8,12 +8,16 @@ namespace EntilandVR.DosCinco.DAM_AJEI.G_Seis {
         [SerializeField] private Transform player;
         [SerializeField] private float speed = 1.0f;
         private  Rigidbody rb;
-        private float health = 100f;
+        public float health = 100f;
        [SerializeField] private AudioSource audioSource;
+        public PlayerStats puntuacionScript;
+        public float points = 100;
+
 
         private void Start()
         {
-
+            player = GameObject.Find("Auto Hand Player").GetComponent<Transform>();
+            puntuacionScript = GameObject.Find("Unity UI Canvas").GetComponent<PlayerStats>();
             rb = GetComponent<Rigidbody>();
         }
 
@@ -21,6 +25,7 @@ namespace EntilandVR.DosCinco.DAM_AJEI.G_Seis {
         {
             if (health <= 0)
             {
+                puntuacionScript.SumarPuntuacion(points);
                 Destroy(gameObject);
             }
         }
