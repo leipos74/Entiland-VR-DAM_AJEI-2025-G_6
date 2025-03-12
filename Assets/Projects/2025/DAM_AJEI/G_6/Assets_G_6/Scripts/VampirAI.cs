@@ -21,8 +21,7 @@ namespace EntilandVR.DosCinco.DAM_AJEI.G_Seis {
         {
             if (health <= 0)
             {
-                audioSource.PlayOneShot(audioSource.clip);
-                Destroy(gameObject, audioSource.clip.length);
+                Destroy(gameObject);
             }
         }
 

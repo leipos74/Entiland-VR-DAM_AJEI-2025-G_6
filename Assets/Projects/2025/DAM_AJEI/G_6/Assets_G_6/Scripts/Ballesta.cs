@@ -13,10 +13,12 @@ namespace EntilandVR.DosCinco.DAM_AJEI.G_Seis
         public float recoilPower = 1;
         public float range = 100;
         public LayerMask layer;
+        public bool isFlecha = true;
 
         public AudioClip shootSound;
         public float shootVolume = 1f;
-        [SerializeField] private flecha flecha;
+        public flecha flecha;
+
 
         private void Start()
         {
@@ -24,13 +26,19 @@ namespace EntilandVR.DosCinco.DAM_AJEI.G_Seis
                 body = GetComponent<Rigidbody>();
         }
 
+
         public void Shoot()
         {
-            Debug.Log("Aaaaaaaaaaaaaaa");
-            //Play the audio sound
-            if (shootSound)
-                AudioSource.PlayClipAtPoint(shootSound, transform.position, shootVolume);
+
+            if (isFlecha)
+            {
+                isFlecha = false;
+                //Play the audio sound
+                if (shootSound)
+                    AudioSource.PlayClipAtPoint(shootSound, transform.position, shootVolume);
                 flecha.Disparar();
+            }
+
         }
     }
 }
